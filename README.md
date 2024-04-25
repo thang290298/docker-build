@@ -50,9 +50,8 @@ Running
 
 Running on docker
 =================
-    git clone https://github.com/thang290298/docker-build.git
-	cd docker-build/ && git checkout telegram-webhook-alert-python
-	cd docker/
+    git clone https://github.com/thang290298/telegram-webhook-alert-python.git
+	cd telegram-webhook-alert-python
     docker build -t webhook-alertmanager-telegram:1.0 .
 
     docker run -d --name telegram-bot \
