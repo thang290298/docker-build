@@ -1,22 +1,18 @@
 FROM alpine:3.7
 
-LABEL maintainer="Carlos Augusto Malucelli <camalucelli@gmail.com>"
-
-WORKDIR /webhook-alertmanager-telegram
+LABEL maintainer "Carlos Augusto Malucelli <malucellicarlos@gmail.com>"
 
 RUN apk update \
                 && apk add py3-pip bash gcc python3-dev musl-dev git libffi-dev openssl-dev \
                 && rm -rf /var/cache/apk/* \
-                && git clone https://github.com/thang290298/docker-build.git \
-                && cd docker-build/  \
-                && git checkout telegram-webhook-alert-python  \
-                && pip3 install -r requirements.txt
-                
-WORKDIR /webhook-alertmanager-telegram
+                && git clone hhttps://github.com/thang290298/telegram-webhook-alert-python.git \
+                && pip3 install -r telegram-webhook-alert-python/requirements.txt
 
-RUN chmod +x /webhook-alertmanager-telegram/run.sh
+WORKDIR /telegram-webhook-alert-python
 
-RUN chmod +x /webhook-alertmanager-telegram/flaskAlert.py
+RUN chmod +x /telegram-webhook-alert-python/run.sh
+
+RUN chmod +x /telegram-webhook-alert-python/flaskAlert.py
 
 EXPOSE 9119
 
