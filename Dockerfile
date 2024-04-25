@@ -10,8 +10,13 @@ RUN apk update \
                 && git clone https://github.com/thang290298/docker-build.git \
                 && cd docker-build/  \
                 && git checkout telegram-webhook-alert-python  \
-                && pip install -r requirements.txt \
-                && chmod +x run.sh
+                && pip3 install -r requirements.txt
+                
+WORKDIR /webhook-alertmanager-telegram
+
+RUN chmod +x /webhook-alertmanager-telegram/run.sh
+
+RUN chmod +x /webhook-alertmanager-telegram/flaskAlert.py
 
 EXPOSE 9119
 
